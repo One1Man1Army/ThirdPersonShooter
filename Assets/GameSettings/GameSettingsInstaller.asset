@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca70a38d9fa0474b9e9a43bcacdf1c8, type: 3}
+  m_Name: GameSettingsInstaller
+  m_EditorClassIdentifier: 
+  gameSettings:
+    inputPrefab: {fileID: 2146695632359532091, guid: 28af56d931d01674782780d2cc87c0f3, type: 3}
+    playerPrefab: {fileID: 3191825097205498906, guid: 6d609919940d6474390bcada98a8342e, type: 3}
+    missilePrefab: {fileID: 9086774145845321736, guid: 698f013fb00fc22429689c395ff23012, type: 3}
+    simpEnemyPrefab: {fileID: 1522978234250943291, guid: ce680e043c360514989565fcd102e5a8, type: 3}
+    bossEnemyPrefab: {fileID: 5936804506676932796, guid: b36913944903d1646804645f8faca077, type: 3}
+    missileVFXPrefab: {fileID: 1930644504616354, guid: be3a8d67cedf6394c995b869e16f4418, type: 3}
+    enemyDeathVFXPrefab: {fileID: 1408916167051838, guid: db8e5e1cf4c43a4479b6a7ed83ced530, type: 3}
+    playerMoveSpeed: 16
+    playerTurnSmoothTime: 0.1
+    playerAttackCooldown: 1
+    playerForceOnDeath: 1000
+    playerForceOnDeathRadius: 2000
+    missileSelfDestroyTime: 3
+    missileDamage: 1
+    missileDamageRadius: 2
+    missileSpeed: 48
