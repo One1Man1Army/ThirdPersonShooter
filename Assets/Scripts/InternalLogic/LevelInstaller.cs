@@ -16,12 +16,12 @@ namespace TPS.InternalLogic
         [SerializeField] private Transform _playerSpawnPoint;
         [SerializeField] private EnemySpawner[] _enemySpawners;
 
-        private GameSettings _gameSettings;
+        private GameData _gameData;
         #endregion
 
         public override void InstallBindings()
         {
-            ResolveGameSettings();
+            Resolve();
             BindInstallerInterfaces();
             BindPools();
             BindFactories();
@@ -29,9 +29,9 @@ namespace TPS.InternalLogic
             BindPlayer();
         }
 
-        private void ResolveGameSettings()
+        private void Resolve()
         {
-            _gameSettings = Container.Resolve<GameSettings>();
+            _gameData = Container.Resolve<GameData>();
         }
 
         #region Pools Bindings
@@ -45,7 +45,7 @@ namespace TPS.InternalLogic
         {
             Container.BindMemoryPool<MissileExplodeVFX, MissileExplodeVFX.Pool>()
                 .WithInitialSize(2)
-                .FromComponentInNewPrefab(_gameSettings.missileVFXPrefab)
+                .FromComponentInNewPrefab(_gameData.missileVFXPrefab)
                 .UnderTransformGroup("MissilesVFXPool");
         }
 
@@ -53,7 +53,7 @@ namespace TPS.InternalLogic
         {
             Container.BindMemoryPool<EnemyDeathVFX, EnemyDeathVFX.Pool>()
                 .WithInitialSize(1)
-                .FromComponentInNewPrefab(_gameSettings.enemyDeathVFXPrefab)
+                .FromComponentInNewPrefab(_gameData.enemyDeathVFXPrefab)
                 .UnderTransformGroup("EnemyDeathVFXPool");
         }
         #endregion
@@ -71,7 +71,7 @@ namespace TPS.InternalLogic
             Container.BindFactory<Vector3, Quaternion, Missile, Missile.Factory>().
                 FromMonoPoolableMemoryPool(
                 x => x.WithInitialSize(3).
-                FromComponentInNewPrefab(_gameSettings.missilePrefab).
+                FromComponentInNewPrefab(_gameData.missilePrefab).
                 UnderTransformGroup("MissilesPool"));
         }
 
@@ -87,7 +87,7 @@ namespace TPS.InternalLogic
             Container
                 .Bind<IEnemiesFactory>()
                 .To<EnemiesFactory>()
-                .FromInstance(new EnemiesFactory(Container, _gameSettings.enemiesPrefabs))
+                .FromInstance(new EnemiesFactory(Container, _gameData.enemiesPrefabs))
                 .AsSingle();
         }
         #endregion
@@ -96,7 +96,7 @@ namespace TPS.InternalLogic
         private void BindPlayer()
         {
             var playerFacade = Container
-                .InstantiatePrefabForComponent<PlayerFacade>(_gameSettings.playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
+                .InstantiatePrefabForComponent<PlayerFacade>(_gameData.playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
 
             Container
                 .Bind<PlayerFacade>()
@@ -109,7 +109,7 @@ namespace TPS.InternalLogic
             Container
                 .Bind<IInputService>()
                 .To<InputService>()
-                .FromComponentInNewPrefab(_gameSettings.inputPrefab)
+                .FromComponentInNewPrefab(_gameData.inputPrefab)
                 .AsSingle();
         }
         #endregion

@@ -1,5 +1,4 @@
 using System;
-using TPS.Enemies;
 using UnityEngine;
 
 namespace TPS.CommonLogic
@@ -7,22 +6,6 @@ namespace TPS.CommonLogic
     [Serializable]
     public sealed class GameSettings
     {
-        [Header("Prefabs")]
-
-        [Header("Player")]
-        public GameObject inputPrefab;
-        public GameObject playerPrefab;
-        public GameObject missilePrefab;
-
-        [Header("Enemies")]
-        public Enemy[] enemiesPrefabs;
-
-        [Header("VFX")]
-        public GameObject missileVFXPrefab;
-        public GameObject enemyDeathVFXPrefab;
-
-        [Header("Settings")]
-
         [Header("Player")]
         public float playerMoveSpeed = 16f;
         public float playerTurnSmoothTime = 0.1f;
