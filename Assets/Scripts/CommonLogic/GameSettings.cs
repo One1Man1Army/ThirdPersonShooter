@@ -7,6 +7,7 @@ namespace TPS.CommonLogic
     public sealed class GameSettings
     {
         [Header("Player")]
+        public float playerHP = 1f;
         public float playerMoveSpeed = 16f;
         public float playerTurnSmoothTime = 0.1f;
         [Min(0.1f)]
@@ -19,5 +20,9 @@ namespace TPS.CommonLogic
         public float missileDamage = 1f;
         public float missileDamageRadius = 2f;
         public float missileSpeed = 48f;
+
+        [Header("Enemies")]
+        public float simpleEnemyHP = 1f;
+        public float bossEnemyHP = 1f;
     }
 }

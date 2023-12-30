@@ -49,8 +49,8 @@ GameObject:
   - component: {fileID: 5538982013649738397}
   - component: {fileID: 6739390831723607499}
   - component: {fileID: -1535773538966940502}
-  - component: {fileID: 2867090592429227377}
   - component: {fileID: 673152709939495644}
+  - component: {fileID: 5182154400613543984}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPoint: {fileID: 7481841593979057480}
-  playerMove: {fileID: 5150194275653308160}
 --- !u!114 &5150194275653308160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ac99440c2eff14bbaf8bac7c4e422d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraPoint: {fileID: 7481841593979057480}
   _characterController: {fileID: 6110304969204866025}
 --- !u!114 &8836708352134313840
 MonoBehaviour:
@@ -254,26 +252,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f687c5b74ad7f04b953c6fe866cd1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 2867090592429227377}
+  _playerHealth: {fileID: 5182154400613543984}
   _playerAnimator: {fileID: 8836708352134313840}
   _playerMove: {fileID: 5150194275653308160}
   _playerAttack: {fileID: 5538982013649738397}
   _characterController: {fileID: 6110304969204866025}
   _deathFX: {fileID: 158308, guid: 96a96c08c36361544affb3c783e0056e, type: 3}
---- !u!114 &2867090592429227377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191825097205498906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047a92ca6d718244ea75936734004da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHP: 1
-  DamageSource: {fileID: 0}
 --- !u!114 &673152709939495644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +271,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _missilesSpawnPoint: {fileID: 2861101693000951489}
+--- !u!114 &5182154400613543984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191825097205498906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542de927fe6542442984864ca0bd47a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageSource: {fileID: 0}
 --- !u!1 &4679634718862284163
 GameObject:
   m_ObjectHideFlags: 0

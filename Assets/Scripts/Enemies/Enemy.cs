@@ -1,4 +1,5 @@
-﻿using TPS.InternalLogic;
+﻿using TPS.CommonLogic;
+using TPS.InternalLogic;
 using UnityEngine;
 
 namespace TPS.Enemies

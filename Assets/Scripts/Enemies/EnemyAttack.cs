@@ -17,7 +17,7 @@ namespace TPS.Enemies
         private void AttackPlayer(Collider collider)
         {
             if (collider.CompareTag("Player"))
-                collider.GetComponent<IHealth>().TakeHit(_damage, transform);
+                collider.GetComponent<Health>().TakeHit(_damage, transform);
         }
 
         private void OnDestroy()

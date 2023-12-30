@@ -2,7 +2,7 @@ namespace TPS.InternalLogic
 {
     public enum EnemyType
     {
-        Simp,
+        Simple,
         Boss
     }
 }

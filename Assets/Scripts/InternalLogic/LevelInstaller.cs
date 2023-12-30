@@ -27,6 +27,7 @@ namespace TPS.InternalLogic
             BindFactories();
             BindInputService();
             BindPlayer();
+            BindEnemiesInitializer();
         }
 
         private void Resolve()
@@ -90,6 +91,15 @@ namespace TPS.InternalLogic
                 .FromInstance(new EnemiesFactory(Container, _gameData.enemiesPrefabs))
                 .AsSingle();
         }
+
+        private void BindEnemiesInitializer()
+        {
+            Container
+                .Bind<IEnemiesInitializer>()
+                .To<EnemiesInitializer>()
+                .AsSingle();
+        }
+
         #endregion
 
         #region Game Entities Bindings
@@ -124,8 +134,7 @@ namespace TPS.InternalLogic
         }
         public void Initialize()
         {
-            var enemiesInitializer = new EnemiesInitializer(Container.Resolve<IEnemiesFactory>(), _enemySpawners);
-            enemiesInitializer.SpawnEnemies();
+            Container.Resolve<IEnemiesInitializer>().SpawnEnemies(_enemySpawners);
         }
         #endregion
     }

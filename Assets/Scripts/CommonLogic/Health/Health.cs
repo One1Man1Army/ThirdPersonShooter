@@ -1,26 +1,16 @@
 using System;
+using TPS.Enemies;
 using UnityEngine;
+using Zenject;
 
 namespace TPS.CommonLogic
 {
-    public class Health : MonoBehaviour, IHealth
+    public abstract class Health : MonoBehaviour, IHittable
     {
-        #region Fields
-        [SerializeField] private float _maxHP = 1f;
-
         public event Action HealthChanged;
         public Transform DamageSource;
-
-        public float Current { get; set; }
-
-        public float Max => _maxHP;
-
-        #endregion
-
-        private void Awake()
-        {
-            Current = Max;
-        }
+        public float Current { get; private set; }
+        public float Max { get; private set; }
 
         public void TakeHit(float damage, Transform damageSource)
         {
@@ -30,6 +20,14 @@ namespace TPS.CommonLogic
             DamageSource = damageSource;
             Current -= damage;
             HealthChanged?.Invoke();
+        }
+
+        internal abstract void InitializeHP(GameSettings gameSettings);
+
+        protected internal void SetValues(float max)
+        {
+            Max = max;
+            Current = max;
         }
     }
 }
