@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
   gameSettings:
+    playerHP: 1
     playerMoveSpeed: 16
     playerTurnSmoothTime: 0.1
     playerAttackCooldown: 1
@@ -22,3 +23,5 @@ MonoBehaviour:
     missileDamage: 1
     missileDamageRadius: 2
     missileSpeed: 48
+    simpleEnemyHP: 1
+    bossEnemyHP: 5
