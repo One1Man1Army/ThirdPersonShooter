@@ -9,8 +9,6 @@ namespace TPS.Player
     public sealed class PlayerMove : MonoBehaviour
     {
         #region Fields
-        public Transform CameraPoint;
-
         [SerializeField] private CharacterController _characterController;
 
         private IInputService _inputService;
@@ -43,27 +41,27 @@ namespace TPS.Player
 
                 var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.transform.eulerAngles.y;
 
-                RotatePlayer(targetAngle);
-                MovePlayer(targetAngle);
+                Rotate(targetAngle);
+                Move(targetAngle);
             }
             else
             {
-                StopPlayer();
+                Stop();
             }
         }
 
-        private void StopPlayer()
+        private void Stop()
         {
             _characterController.SimpleMove(Vector3.zero);
         }
 
-        private void RotatePlayer(float targetAngle)
+        private void Rotate(float targetAngle)
         {
             var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
 
-        private void MovePlayer(float targetAngle)
+        private void Move(float targetAngle)
         {
             var moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _characterController.Move(moveDir.normalized * _movementSpeed * Time.deltaTime);

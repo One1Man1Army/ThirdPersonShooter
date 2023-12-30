@@ -1,4 +1,5 @@
 using System;
+using TPS.Enemies;
 using UnityEngine;
 
 namespace TPS.CommonLogic
@@ -14,8 +15,7 @@ namespace TPS.CommonLogic
         public GameObject missilePrefab;
 
         [Header("Enemies")]
-        public GameObject simpEnemyPrefab;
-        public GameObject bossEnemyPrefab;
+        public Enemy[] enemiesPrefabs;
 
         [Header("VFX")]
         public GameObject missileVFXPrefab;

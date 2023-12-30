@@ -12,9 +12,9 @@ namespace TPS.CameraLogic
         #endregion
 
         [Inject]
-        public void Construct(PlayerMove playerMove)
+        public void Construct(PlayerFacade playerFacade)
         {
-            _cinemachineCam.Follow = playerMove.CameraPoint;
+            _cinemachineCam.Follow = playerFacade.cameraPoint;
         }
     }
 }

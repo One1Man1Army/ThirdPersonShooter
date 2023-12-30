@@ -16,10 +16,10 @@ namespace TPS.CameraLogic
         #endregion
 
         [Inject]
-        public void Construct(IInputService inputService, PlayerMove playerMove)
+        public void Construct(IInputService inputService, PlayerFacade playerFacade)
         {
             _inputService = inputService;
-            _cinemachineCam.LookAt = playerMove.CameraPoint;
+            _cinemachineCam.LookAt = playerFacade.cameraPoint;
             CinemachineCore.GetInputAxis = GetInputAxis;
         }
 

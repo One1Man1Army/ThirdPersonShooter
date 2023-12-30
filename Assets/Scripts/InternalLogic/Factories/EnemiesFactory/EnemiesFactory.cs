@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TPS.Enemies;
 using UnityEngine;
 using Zenject;
 
@@ -8,28 +10,26 @@ namespace TPS.InternalLogic
         #region Fields
         private readonly DiContainer _diContainer;
 
-        private readonly GameObject _simpEnemyPrefab;
-        private readonly GameObject _bossEnemyPrefab;
+        private readonly Dictionary<EnemyType, Enemy> enemies = new();
         #endregion
 
-        public EnemiesFactory(DiContainer diContainer, GameObject simpEnemyPrefab, GameObject bossEnemyPrefab)
+        public EnemiesFactory(DiContainer diContainer, Enemy[] enemiesPrefabs)
         {
             _diContainer = diContainer;
-            _simpEnemyPrefab = simpEnemyPrefab;
-            _bossEnemyPrefab = bossEnemyPrefab;
-        }
 
+            InitEnemies(enemiesPrefabs);
+        }
 
         public void Create(EnemyType type, Vector3 pos, Transform parent)
         {
-            switch (type)
+            _diContainer.InstantiatePrefab(enemies[type], pos, Quaternion.identity, parent);
+        }
+
+        private void InitEnemies(Enemy[] enemiesPrefabs)
+        {
+            foreach (Enemy enemy in enemiesPrefabs)
             {
-                case EnemyType.Simp:
-                    _diContainer.InstantiatePrefab(_simpEnemyPrefab, pos, Quaternion.identity, parent);
-                    break;
-                case EnemyType.Boss:
-                    _diContainer.InstantiatePrefab(_bossEnemyPrefab, pos, Quaternion.identity, parent);
-                    break;
+                enemies.Add(enemy.Type, enemy);
             }
         }
     }

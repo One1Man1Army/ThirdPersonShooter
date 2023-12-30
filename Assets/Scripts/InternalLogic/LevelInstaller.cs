@@ -87,7 +87,7 @@ namespace TPS.InternalLogic
             Container
                 .Bind<IEnemiesFactory>()
                 .To<EnemiesFactory>()
-                .FromInstance(new EnemiesFactory(Container, _gameSettings.simpEnemyPrefab, _gameSettings.bossEnemyPrefab))
+                .FromInstance(new EnemiesFactory(Container, _gameSettings.enemiesPrefabs))
                 .AsSingle();
         }
         #endregion
@@ -95,12 +95,12 @@ namespace TPS.InternalLogic
         #region Game Entities Bindings
         private void BindPlayer()
         {
-            var playerMove = Container
-                .InstantiatePrefabForComponent<PlayerMove>(_gameSettings.playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
+            var playerFacade = Container
+                .InstantiatePrefabForComponent<PlayerFacade>(_gameSettings.playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
 
             Container
-                .Bind<PlayerMove>()
-                .FromInstance(playerMove)
+                .Bind<PlayerFacade>()
+                .FromInstance(playerFacade)
                 .AsSingle();
         }
 

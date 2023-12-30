@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1922793915316322670}
   - component: {fileID: 6362210738793458973}
   - component: {fileID: 4336469605327026171}
+  - component: {fileID: 4204370602436983374}
   m_Layer: 0
   m_Name: EnemySimp
   m_TagString: Untagged
@@ -193,6 +194,18 @@ MonoBehaviour:
   _enemyHealth: {fileID: 756468327699032423}
   _follow: {fileID: 2176821103255749490}
   _onDeathEffect: {fileID: 1408916167051838, guid: db8e5e1cf4c43a4479b6a7ed83ced530, type: 3}
+--- !u!114 &4204370602436983374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522978234250943291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3514e2c908b0e5e43b23232a188820e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2099955832109076378
 GameObject:
   m_ObjectHideFlags: 0

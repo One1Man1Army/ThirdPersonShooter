@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6110304969204866025}
   - component: {fileID: 39792169562407231}
   - component: {fileID: 4353674418979209707}
+  - component: {fileID: 4297319789078100947}
   - component: {fileID: 5150194275653308160}
   - component: {fileID: 8836708352134313840}
   - component: {fileID: 5538982013649738397}
@@ -149,6 +150,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 18, z: 6}
   m_Center: {x: 0, y: 9, z: 0}
+--- !u!114 &4297319789078100947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191825097205498906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e292c283540ea34c8f9651fe7ed5298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPoint: {fileID: 7481841593979057480}
+  playerMove: {fileID: 5150194275653308160}
 --- !u!114 &5150194275653308160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraPoint: {fileID: 7481841593979057480}
-  _movementSpeed: 16
-  _turnSmoothTime: 0.1
   _characterController: {fileID: 6110304969204866025}
 --- !u!114 &8836708352134313840
 MonoBehaviour:
@@ -192,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decbb3c591e0ed145982df6bc8850996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 1
   _missilesLauncher: {fileID: 673152709939495644}
 --- !u!114 &6739390831723607499
 MonoBehaviour:
@@ -206,8 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bc57cd2fe8bb34bbe2f1c906ef74a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceOnDeath: 1500
-  _forceRadius: 3000
   _colliders:
   - {fileID: 1549752995739097198}
   - {fileID: 5887979905096142050}

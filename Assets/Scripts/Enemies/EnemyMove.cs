@@ -14,9 +14,9 @@ namespace TPS.Enemies
         private Transform _player;
 
         [Inject]
-        public void Construct(PlayerMove playerMove)
+        public void Construct(PlayerFacade playerFacade)
         {
-             _player = playerMove.transform;
+             _player = playerFacade.transform;
         }
 
         private void Update()
