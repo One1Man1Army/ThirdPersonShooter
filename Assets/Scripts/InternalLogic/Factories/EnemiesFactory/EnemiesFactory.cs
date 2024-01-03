@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TPS.Enemies;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace TPS.InternalLogic
         {
             _diContainer = diContainer;
 
-            InitEnemies(enemiesPrefabs);
+            InitEnemiesContainer(enemiesPrefabs);
         }
 
         public void Create(EnemyType type, Vector3 pos, Transform parent)
@@ -25,11 +26,19 @@ namespace TPS.InternalLogic
             _diContainer.InstantiatePrefab(enemies[type], pos, Quaternion.identity, parent);
         }
 
-        private void InitEnemies(Enemy[] enemiesPrefabs)
+        private void InitEnemiesContainer(Enemy[] enemiesPrefabs)
         {
             foreach (Enemy enemy in enemiesPrefabs)
             {
-                enemies.Add(enemy.Type, enemy);
+                try
+                {
+                    enemies.Add(enemy.Type, enemy);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log($"Cannot add enemy type to enemies factory! {e.Message}"); ;
+                }
+                
             }
         }
     }
