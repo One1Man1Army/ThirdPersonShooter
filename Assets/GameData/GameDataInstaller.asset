@@ -19,5 +19,6 @@ MonoBehaviour:
     enemiesPrefabs:
     - {fileID: 4204370602436983374, guid: ce680e043c360514989565fcd102e5a8, type: 3}
     - {fileID: -4610559131112821934, guid: b36913944903d1646804645f8faca077, type: 3}
+    - {fileID: 4204370602436983374, guid: ce680e043c360514989565fcd102e5a8, type: 3}
     missileVFXPrefab: {fileID: 1930644504616354, guid: be3a8d67cedf6394c995b869e16f4418, type: 3}
     enemyDeathVFXPrefab: {fileID: 1408916167051838, guid: db8e5e1cf4c43a4479b6a7ed83ced530, type: 3}
