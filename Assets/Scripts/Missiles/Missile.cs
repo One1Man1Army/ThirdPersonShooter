@@ -7,11 +7,10 @@ using Zenject;
 
 namespace TPS.Missiles
 {
+    [RequireComponent(typeof(Collider))]
     public sealed class Missile : MonoBehaviour, IPoolable<Vector3, Quaternion, IMemoryPool>, IDisposable
     {
         #region Fields
-        [SerializeField] private TriggerObserver _triggerObserver;
-
         public event Action<Missile> OnExplode;
 
         private IVFXFactory _vfxFactory;
@@ -26,7 +25,6 @@ namespace TPS.Missiles
         public void Construct(IVFXFactory vfxFactory, GameSettings settings)
         {
             _vfxFactory = vfxFactory;
-            _triggerObserver.TriggerEnter += CheckHit;
 
             _selfDestroyTime = settings.missileSelfDestroyTime;
         }
@@ -40,6 +38,11 @@ namespace TPS.Missiles
 
             _hasExploded = false;
             SetSelfDestroyTimer();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            CheckHit(other);
         }
 
         private void CheckHit(Collider other)
@@ -81,12 +84,6 @@ namespace TPS.Missiles
         public void OnDespawned()
         {
             _pool = null;
-        }
-
-
-        void OnDestroy()
-        {
-            _triggerObserver.TriggerEnter -= CheckHit;
         }
 
         public class Factory : PlaceholderFactory<Vector3, Quaternion, Missile>

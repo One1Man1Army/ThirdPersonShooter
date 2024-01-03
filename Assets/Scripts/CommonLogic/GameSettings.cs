@@ -23,6 +23,8 @@ namespace TPS.CommonLogic
 
         [Header("Enemies")]
         public float simpleEnemyHP = 1f;
-        public float bossEnemyHP = 1f;
+        public float bossEnemyHP = 5f;
+        public float simpleEnemyDamage = 10f;
+        public float bossEnemyDamage = 15f;
     }
 }

@@ -1,17 +1,26 @@
 using TPS.CommonLogic;
+using TPS.InternalLogic;
 using UnityEngine;
+using Zenject;
 
 namespace TPS.Enemies
 {
+    [RequireComponent(typeof(Collider))]
     public sealed class EnemyAttack : MonoBehaviour
 	{
-		[SerializeField] TriggerObserver _triggerObserver;
+        [SerializeField] private Enemy _self;
 
-        [SerializeField] private float _damage = 10f;
+        private float _damage;
 
-        private void Awake()
+        [Inject]
+        public void Construct(GameSettings gameSettings)
         {
-            _triggerObserver.TriggerEnter += AttackPlayer;
+            SetDamage(gameSettings);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            AttackPlayer(other);
         }
 
         private void AttackPlayer(Collider collider)
@@ -20,9 +29,17 @@ namespace TPS.Enemies
                 collider.GetComponent<Health>().TakeHit(_damage, transform);
         }
 
-        private void OnDestroy()
+        private void SetDamage(GameSettings gameSettings)
         {
-            _triggerObserver.TriggerEnter -= AttackPlayer;
+            switch (_self.Type)
+            {
+                case EnemyType.Simple:
+                    _damage = gameSettings.simpleEnemyDamage;
+                    break;
+                case EnemyType.Boss:
+                    _damage = gameSettings.bossEnemyDamage;
+                    break;
+            }
         }
     }
 }
