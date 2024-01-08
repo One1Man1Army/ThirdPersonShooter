@@ -3,7 +3,7 @@ using Zenject;
 
 namespace TPS.VFX
 {
-    public class PoolableVFX : MonoBehaviour, IPoolable
+    public class PoolableVFX : MonoBehaviour, IPoolable 
     {
         public float Duration { get; private set; }
 
@@ -16,11 +16,12 @@ namespace TPS.VFX
 
         public void OnDespawned()
         {
-
+            
         }
 
         public void OnSpawned()
-        { 
+        {
+            
         }
     }
 }

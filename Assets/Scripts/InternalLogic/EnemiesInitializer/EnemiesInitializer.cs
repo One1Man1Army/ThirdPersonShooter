@@ -26,8 +26,8 @@ namespace TPS.InternalLogic
 
         private void CreateRoot()
         {
-            if( _enemiesRoot == null )
-                _enemiesRoot = GameObject.Instantiate(new GameObject("EnemiesRoot")).transform;
+            if( _enemiesRoot == null)
+                _enemiesRoot = new GameObject("EnemiesRoot").transform;
         }
     }
 }
